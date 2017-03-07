@@ -11,10 +11,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | of this setting
 |
 */
-define('PROJECT', 'Sistema Medico');
+define('PROJECT', 'Sistema Calzature');
 //define('HOST_NAME', 'localhost:81/siscom');
 //define('HOST_NAME', '10.10.16.47:8080/sismedico');
-define('HOST_NAME', 'localhost:81/sismedico');
+define('HOST_NAME', 'localhost:81/CodeShoes');
 
 /*define('PROJECT', 'Sistema Comercial');
 define('HOST_NAME', 'www.dluanas.com/siscom');*/
