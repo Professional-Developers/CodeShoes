@@ -1,0 +1,133 @@
+-- MySQL Administrator dump 1.4
+--
+-- ------------------------------------------------------
+-- Server version	5.1.41
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+--
+-- Create schema bdcalzado
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ bdcalzado;
+USE bdcalzado;
+
+--
+-- Table structure for table `bdcalzado`.`persona`
+--
+
+DROP TABLE IF EXISTS `persona`;
+CREATE TABLE `persona` (
+  `nPerId` int(11) NOT NULL AUTO_INCREMENT,
+  `cPerNombres` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `cPerApellidoPaterno` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `cPerApellidoMaterno` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `cPerDni` char(8) COLLATE utf8_spanish_ci NOT NULL,
+  `cPerDireccion` varchar(90) COLLATE utf8_spanish_ci NOT NULL,
+  `cPerTelefono` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `cPerCelular` varchar(11) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `cPerEstado` char(1) COLLATE utf8_spanish_ci NOT NULL,
+  `tPerFechaRegistro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `tPerFechaBaja` timestamp NULL DEFAULT NULL,
+  `nSurId` int(10) DEFAULT NULL,
+  PRIMARY KEY (`nPerId`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Dumping data for table `bdcalzado`.`persona`
+--
+
+/*!40000 ALTER TABLE `persona` DISABLE KEYS */;
+INSERT INTO `persona` (`nPerId`,`cPerNombres`,`cPerApellidoPaterno`,`cPerApellidoMaterno`,`cPerDni`,`cPerDireccion`,`cPerTelefono`,`cPerCelular`,`cPerEstado`,`tPerFechaRegistro`,`tPerFechaBaja`,`nSurId`) VALUES 
+ (1,'Cristian','Gonzalez','Torres','46088871','CAjamarca 108 urb Aranjuez','261811','987713704','1','2016-04-19 22:19:17',NULL,1),
+ (2,'Andy','xxx','xxx','11111111','xxx','xxx',NULL,'1','2016-04-19 22:20:50',NULL,0),
+ (3,'Ernestina','Pancracia','xxx','22222222','xxx','xxxx',NULL,'1','2016-04-19 22:22:37',NULL,0),
+ (4,'Julia','Torres','Alva','33333333','xxx',NULL,NULL,'1','2016-04-27 22:19:52',NULL,NULL),
+ (5,'Fidel','Torres','xxx','44444444','',NULL,NULL,'1','2016-04-27 22:21:20',NULL,NULL),
+ (6,'Gloria','Torres','Alva','55555555','',NULL,NULL,'1','2016-04-27 22:21:20',NULL,NULL),
+ (7,'Franca','Alva','Leon','','',NULL,NULL,'1','2016-04-27 22:21:20',NULL,NULL),
+ (8,'Emilia','Rodriguez','Rebaza','','',NULL,NULL,'1','2016-04-27 22:21:20',NULL,NULL),
+ (9,'Fernando','Luque','xxx','','',NULL,NULL,'1','2016-04-27 22:21:20',NULL,NULL),
+ (10,'Pedro','Suarez','Vertiz','','',NULL,NULL,'1','2016-04-28 11:42:33',NULL,NULL);
+INSERT INTO `persona` (`nPerId`,`cPerNombres`,`cPerApellidoPaterno`,`cPerApellidoMaterno`,`cPerDni`,`cPerDireccion`,`cPerTelefono`,`cPerCelular`,`cPerEstado`,`tPerFechaRegistro`,`tPerFechaBaja`,`nSurId`) VALUES 
+ (11,'Roxana','Merino','Pul','','',NULL,NULL,'1','2016-04-28 11:42:34',NULL,NULL),
+ (12,'Carlos','Pichon','322','','',NULL,NULL,'1','2016-04-28 11:42:34',NULL,NULL),
+ (13,'Diego','Torres','ddd','','',NULL,NULL,'1','2016-04-28 11:42:34',NULL,NULL),
+ (14,'Briguitte','Torres','Algo','87654321','Cable Magico','12412424','981924124','1','2016-05-13 10:58:56',NULL,NULL),
+ (15,'Carlos','Perez','Rojas','26181122','Los sauces','2626218181','9871515616','1','2016-05-13 15:24:45',NULL,NULL);
+/*!40000 ALTER TABLE `persona` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `bdcalzado`.`rol`
+--
+
+DROP TABLE IF EXISTS `rol`;
+CREATE TABLE `rol` (
+  `nIdRol` int(11) NOT NULL AUTO_INCREMENT,
+  `cNombre` varchar(50) NOT NULL,
+  `nEstado` char(1) NOT NULL,
+  PRIMARY KEY (`nIdRol`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bdcalzado`.`rol`
+--
+
+/*!40000 ALTER TABLE `rol` DISABLE KEYS */;
+INSERT INTO `rol` (`nIdRol`,`cNombre`,`nEstado`) VALUES 
+ (1,'Administrador','1'),
+ (2,'Asistente','1'),
+ (3,'Doctor','1');
+/*!40000 ALTER TABLE `rol` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `bdcalzado`.`usuario`
+--
+
+DROP TABLE IF EXISTS `usuario`;
+CREATE TABLE `usuario` (
+  `nUsuCodigo` int(11) NOT NULL AUTO_INCREMENT,
+  `nPerId` int(11) NOT NULL,
+  `cUsuUsuario` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `cUsuClave` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `cUsuEstado` char(1) COLLATE utf8_spanish_ci NOT NULL,
+  `cUsuTipo` char(1) COLLATE utf8_spanish_ci NOT NULL,
+  `nIdRol` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`nUsuCodigo`),
+  KEY `fk_Usuario_Persona1` (`nPerId`),
+  KEY `fk_Usuario_Rol1` (`nIdRol`),
+  CONSTRAINT `fk_Usuario_Persona1` FOREIGN KEY (`nPerId`) REFERENCES `persona` (`nPerId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Usuario_Rol1` FOREIGN KEY (`nIdRol`) REFERENCES `rol` (`nIdRol`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Dumping data for table `bdcalzado`.`usuario`
+--
+
+/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` (`nUsuCodigo`,`nPerId`,`cUsuUsuario`,`cUsuClave`,`cUsuEstado`,`cUsuTipo`,`nIdRol`) VALUES 
+ (1,1,'cri','1234','1','A',1),
+ (6,2,'11111111','123','1','',2),
+ (7,3,'22222222','123','1','',2),
+ (8,4,'33333333','123','1','',3),
+ (9,14,'87654321','123','1','',2);
+/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
