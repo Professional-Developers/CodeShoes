@@ -11,6 +11,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | of this setting
 |
 */
+define('PROJECT', 'Sistema Medico');
+//define('HOST_NAME', 'localhost:81/siscom');
+//define('HOST_NAME', '10.10.16.47:8080/sismedico');
+define('HOST_NAME', 'localhost:81/sismedico');
+
+/*define('PROJECT', 'Sistema Comercial');
+define('HOST_NAME', 'www.dluanas.com/siscom');*/
+//define('FOLDER', 'vasoleche');
+define('URL_MAIN', 'http://'.HOST_NAME.'/'); 
+define('URL_MAIN_LOGO', 'http://'.HOST_NAME.'/uploads/logoEmpresa'); 
+
+define('URL_MAIN_PRODUCTOS', 'http://'.HOST_NAME.'/uploads/productos'); 
+
+define('URL_DASHBOARD', 'http://'.HOST_NAME.'/principal/'); 
+define('URL_CSS', 'http://'.HOST_NAME.'/css/');
+define('URL_JS', 'http://'.HOST_NAME.'/js/');
+define('URL_IMG', 'http://'.HOST_NAME.'/images/');
+
+
+define('URL_PLU', 'http://'.HOST_NAME.'/plugins/');
+
+define('URL_PLU_INSPINIA', 'http://'.HOST_NAME.'/plugins/Inspinia/');
+define('URL_PLU_CSS', 'http://'.HOST_NAME.'/plugins/Inspinia/css/');
+define('URL_PLU_JS', 'http://'.HOST_NAME.'/plugins/Inspinia/js/');
+define('URL_PLU_IMAGES', 'http://'.HOST_NAME.'/plugins/Inspinia/images/');
+define('URL_PLU_IMG', 'http://'.HOST_NAME.'/plugins/Inspinia/img/');
+
+define('URL_IMG_LOGO', 'http://'.HOST_NAME.'/images/logo/');
+define('URL_JS_AD', 'http://'.HOST_NAME.'/jsAdicional/');
+define('URL_CSS_AD', 'http://'.HOST_NAME.'/css/admin/');
+
 defined('SHOW_DEBUG_BACKTRACE') OR define('SHOW_DEBUG_BACKTRACE', TRUE);
 
 /*
