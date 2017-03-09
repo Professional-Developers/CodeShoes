@@ -9,7 +9,6 @@
         <link href="<?php echo URL_PLU_CSS; ?>bootstrap.css" rel="stylesheet">
         <link href="<?php echo URL_PLU_CSS; ?>animate.css" rel="stylesheet">
         <link href="<?php echo URL_PLU_CSS; ?>style.css" rel="stylesheet">
-
     </head>
     
     <body class="gray-bg">
@@ -23,7 +22,6 @@
                 <div class="col-md-6">
                     <div class="ibox-content">
                         <form class="m-t" role="form" action="#" id="loginForm" name="loginForm">
-                            <input type="hidden" id="idBaseUrl" value="<?php echo URL_MAIN; ?>" />
                             <div class="form-group">
                                 <input id="username" type="text" class="form-control" placeholder="Usuario" required="" value="cri">
                             </div>
@@ -60,7 +58,9 @@
             $("#loginForm").validate({
                 submitHandler: function() {
                     msgLoadSave("#cargaBtn", "#loginBtn");
-                    var url_base = $("#idBaseUrl").val();
+                    //var url_base = $("#idBaseUrl").val();
+                    var url_base = "<?php echo URL_MAIN; ?>"
+                    //alert(url_base)
                     var rand = Math.random() * 11;
                     //$.post("http://localhost:81/siscom/usuario/validar",{//get
                     $.post(url_base + "usuarios/validar", {//get
@@ -73,7 +73,7 @@
                         if (data == "1") {
                             //form.submit();
                             //window.location="http://localhost:81/siscom/principal";
-                            window.location = url_base + "principal";
+                            window.location = url_base + "dashboard";
                             mensajeExito("Acceso Permitido");
                             //location.href='usuario/validar';   
                         } else {

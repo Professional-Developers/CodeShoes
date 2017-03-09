@@ -42,7 +42,7 @@ $(function () {
 function loadchangepass() {
     msgLoadSave("#msgUpdClave", "#btnchange", "Subiendo Archivo");
     $.ajax({
-        url: 'usuario/updatePass',
+        url: 'usuarios/updatePass',
         type: 'post',
         cache: false,
         data: {
@@ -131,17 +131,16 @@ function getAsignarPermisos(pid,rol) {
 }*/
 function loadGridRolesView() {
     $("#listaRoles").html("");
-    //msgLoading("#listaRoles", "");
+    //alert(223)
     $.ajax({
         type: "POST",
-        //url: "usuario/qryPersonaUsu",
         url: "rol/qryRolUsu",
         cache: false,
         data: {
             tipo: 'CBO'
         },
         success: function (data) {
-            //alert("hhuhuh")
+            console.log(data);
             $("#listaRoles").html(data);
         },
         error: function () {
@@ -154,7 +153,7 @@ function loadGridView() {
     msgLoading("#listaPersonasUsuarios", "");
     $.ajax({
         type: "POST",
-        url: "usuario/qryPersonaUsu",
+        url: "usuarios/qryPersonaUsu",
         cache: false,
         data: {
             tipo: 'LPU'
@@ -185,7 +184,7 @@ function guardarPermisos(){
     //Probando cuenta personal bitbucket
     $.ajax({
         //url:'usuario/setPermisosIns',
-        url:'usuario/setPermisosRolIns',
+        url:'usuarios/setPermisosRolIns',
         type:'POST',
         cache:false,
         data:{
