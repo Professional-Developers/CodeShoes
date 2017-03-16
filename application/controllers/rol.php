@@ -7,12 +7,11 @@ class Rol extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        /*$this->load->model('usuario_model', 'objUsuario');
-        
+        $this->load->model('permisorol_model', 'ObjPermiso');
+        $this->load->model('usuario_model', 'objUsuario');
         $this->load->model('menu_model', 'ObjMenu');
-        $this->load->model('permiso_model', 'ObjPermiso');
         $this->load->model('modulo_model', 'ObjModulo');
-        $this->load->model('empresa_model', 'ObjEmpresa');*/
+        $this->load->model('empresa_model', 'ObjEmpresa');
         $this->load->model('persona_model', 'ObjPersona');
         $this->load->model('rol_model', 'ObjRol');
     }
@@ -43,8 +42,7 @@ class Rol extends CI_Controller {
         $this->load->view("rol/qry_view", $data);
         //print_r($data);
     }
-    /*public function getPermisos() {
-        
+    public function getPermisos() {
         //echo "holaa";
         $pid = $this->input->post('pid');//id rol
         $rol = $this->input->post('rol');//id rol
@@ -53,23 +51,20 @@ class Rol extends CI_Controller {
         $data['rol'] = $rol;
         $temp = array();
         $modulos = $this->ObjModulo->getModulo();
-        //print_p($this->session->all_userdata());
-        //print_p($modulos);exit();
-
-        //$menusAsignados = $this->ObjPermiso->PermisosxUsuario($pid);
         $menusAsignados = $this->ObjPermiso->PermisosxRol($pid);
+        
         foreach ($modulos as $key => $value) {
             $temp[$value['nModId']]['key'] = $value['nModId'];
             $temp[$value['nModId']]['title'] = $value['cModModulo'];
-            
-            $menu = $this->ObjMenu->getMenuxModulo($value['nModId']);
+            $menu = $this->ObjMenu->getMenuxModulo($value['nModId']);//oki
             $temp_menu = array();
             $i = 0;
-            //print_r($menu);exit;
             foreach ($menu as $row) {
-                if (search_in_array($row['nMenId'], $menusAsignados, 'nMenId')) {
-                    $temp_menu[$i]['select'] = true;
-                }
+                //if($menusAsignados ===FALSE){
+                    if (search_in_array($row['nMenId'], $menusAsignados, 'nMenId')) {
+                        $temp_menu[$i]['select'] = true;
+                    }
+                //}
                 $temp_menu[$i]['key'] = $row['nMenId'];
                 $temp_menu[$i]['title'] = $row['cMenMenu'];
                 $i++;
@@ -80,7 +75,7 @@ class Rol extends CI_Controller {
         //print_p($temp);exit;
         $data['permisos'] = $temp;
         $this->load->view('usuario/permisos_view', $data);
-    }*/
+    }
 
     
 

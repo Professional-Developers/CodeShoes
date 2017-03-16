@@ -51,8 +51,14 @@
 		public function getModulo(){
 			$query = $this->db->query("CALL USP_S_MODULOS()");
 			if ($query->num_rows() > 0){
-				return $query->result_array();
+				//return $query->result_array();
+                                $res = $query->result_array(); //sirve para mandar los datos
+                                $query->next_result();
+                                $query->free_result();
+                                return $res;
 			}else{
+                                $query->next_result();
+                                $query->free_result();
 				return false;
 			}
 		}

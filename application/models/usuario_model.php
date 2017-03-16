@@ -159,7 +159,21 @@ class Usuario_model extends CI_Model {
             $this->setCPersona($row->Nombre);
         }
     }
-
+    
+    public function updateclave($idusu, $clave, $rol) {
+        $sql = "UPDATE usuario SET cUsuClave='" . trim($clave) . "', nIdRol='" . trim($rol) . "' WHERE nUsuCodigo = $idusu";
+        // echo $sql;exit();
+        $query = $this->db->query($sql);
+        if ($query) {
+            return true;
+        }
+        return false;
+    }
+    public function insUsuario() {
+        $sql = "CALL USP_USU_I_REGISTRAR('" . $this->get_nPerId() . "','" . $this->get_cUsuUsuario() . "','" . $this->get_cUsuClave() . "','" . $this->getNIdRol() . "')";
+        $query = $this->db->query($sql);
+        return $query;
+    }
 }
 
 ?>

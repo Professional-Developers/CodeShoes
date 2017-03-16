@@ -19,9 +19,10 @@ $(function () {
     $("#btnAsignar").bind({
         click:function(evt){
             evt.preventDefault();
-            guardarPermisos();
+            guardarPermisosRol();
         }
     });
+    
     /*
     $("#btnAsignar").bind({
         click: function (evt) {
@@ -83,7 +84,7 @@ function guardarPermisos() {
     //console.log(selKeys);
     //Probando cuenta personal bitbucket
     $.ajax({
-        url: 'usuario/setPermisosIns',
+        url: 'usuarios/setPermisosIns',
         type: 'POST',
         cache: false,
         data: {
@@ -170,7 +171,7 @@ function loadGridView() {
 
 //ROL
 
-function guardarPermisos(){
+function guardarPermisosRol(){
     var rootNode = $("#listPermisos").dynatree("getRoot");
     console.log(rootNode.data.key);
     var selNodes = rootNode.tree.getSelectedNodes();
@@ -192,6 +193,7 @@ function guardarPermisos(){
             pid:$("#txtpid").val()
         },
         success:function(data){
+            console.log(data);
             if (data=="1") {
                 //$('#permisosModal').modal('hide');
                 $('#permisosRolModal').modal('hide');

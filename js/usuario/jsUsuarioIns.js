@@ -1,5 +1,5 @@
 $(function () {
-    soloNumeros("#txtcPerDni", "keypress");
+    //soloNumeros("#txtcPerDni", "keypress");
     $("#txtcPerDni").keyup(function (evt) {
         //alert($("#txt_dni_asignar").val().length)
         if (evt.keyCode == 13) {
@@ -47,7 +47,7 @@ $(function () {
                 msgLoadSave("#message", "#btnRegistrarUsuario");
 
                 $.ajax({
-                    url: 'usuario/insUsuario',
+                    url: 'usuarios/insUsuario',
                     type: 'post',
                     data: {
                         txt_nPerId: $("#txt_nPerId").val(),

@@ -146,7 +146,11 @@ class Menu_model extends CI_Model {
         $sql = "CALL USP_S_MENU('LXM'," . $id . ")";
         $query = $this->db->query($sql);
         if ($query->num_rows() > 0) {
-            return $query->result_array();
+            //return $query->result_array();
+            $res = $query->result_array(); //sirve para mandar los datos
+            $query->next_result();
+            $query->free_result();
+            return $res;
         } else {
             return false;
         }

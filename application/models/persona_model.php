@@ -226,8 +226,6 @@ class Persona_model extends CI_Model {
         }
     }
 
-   
-
     function eliminarPersona($ncodigo) {
         $query = "call USP_SIS_D_PERSONA(" . $ncodigo . ")";
         $query2 = $this->db->query($query);
@@ -248,16 +246,6 @@ class Persona_model extends CI_Model {
         $query = $this->db->query("CALL USP_SIS_U_PERSONA('" . $this->get_cPerNombres() . "','" . $this->get_cPerApellidoPaterno() . "','" . $this->get_cPerApellidoMaterno() . "','" . $this->get_cPerDni() . "','" . $this->get_cPerDireccion() . "','" . $this->get_cPerTelefono() . "','" . $this->get_cPerCelular() . "'," . $hdnidper . ",'" . $this->getNSurId() . "')");
         return $query;
     }
-
-    /* function qryClub() {
-      $query = "call USP_CLU_S_CLUB()";
-      $query2 = $this->db->query($query);
-      if ($query2->num_rows() > 0) {
-      return $query2->result_array(); //sirve para mandar los datos
-      } else {
-      return false;
-      }
-      } */
 
     public function buscaxDniGet() {
         $sql = "CALL USP_PER_S_DNI('" . $this->get_cPerDni() . "');";

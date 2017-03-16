@@ -1,7 +1,8 @@
 <link href="<?php echo URL_PLU; ?>tree/css/ui.dynatree.css" rel="stylesheet" type="text/css">
 <script src="<?php echo URL_PLU; ?>tree/js/jquery.dynatree.js" type="text/javascript"></script>
 <h3><?php 
-    echo $rol
+    echo $rol;
+    //print_p($permisos);exit;
 ?>
 </h3>
 <script>

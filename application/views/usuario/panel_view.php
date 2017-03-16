@@ -90,6 +90,7 @@
     <div class="modal_dialog">
         <div class="modal-content modalAmpliado">
             <div class="modal-header" id="headPermisoUpd">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h3>Permisos Rol</h3>
             </div>
             <div class="modal-body" id="bodyPermisoUpd">
