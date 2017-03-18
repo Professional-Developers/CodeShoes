@@ -132,6 +132,7 @@ class Usuario_model extends CI_Model {
                 P.cPerEstado=1 AND
                 U.cUsuUsuario=? AND U.cUsuClave=? limit 1"
                 , array(trim($usuario), trim($clave)));
+      
         if ($query->num_rows() > 0) {
             $row = $query->row();
             $this->get_ObjUsuario($row->nUsuCodigo);
